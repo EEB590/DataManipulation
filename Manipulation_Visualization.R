@@ -3,7 +3,7 @@
 
 #we're just going to work with the second experiment (transplant experiment)
 
-transplant2<-read.csv("transplant2.csv", header=T)
+transplant2<-read.csv("transplant2.csv", header=T, as.is=T)
 
 str(transplant2)
 
@@ -30,7 +30,7 @@ mutate(transplant2, webarea = (websize/2)^2*pi) #calculate webarea column from w
 
 #summarize and group_by 
 #group_by just takes a table and converts it into a grouped table so you can perform operations by each group
-summarize(group_by(transplant2, island, native, netting), mean=mean(duration))
+sumtransplant<-summarize(group_by(transplant2, island, native, netting), mean=mean(duration), max=max(duration))
 
 #the pipe function %>% allows you to pipe the output from one function to the input of another function. Instead of nesting functions (reading from the inside to the outside), the idea of of piping is to read the functions from left to right.  (description from http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
 
